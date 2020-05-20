@@ -7,13 +7,62 @@
 
 int main(int argc, string argv[1])
 {
-    if (argc != 2)
+    if (argc == 2 && strlen(argv[1]) == 26)
     {
-        printf("%s key\n", argv[0]);
+        int n = strlen(argv[1]);
+        int num_of_alpha = 0;
+        
+        for (int i = 0; i < n; i++)
+        {
+            if (isalpha(argv[1][i]))
+            {
+                ++num_of_alpha;
+            }
+        }
+        
+        if (num_of_alpha == n)
+        {
+            string text = get_string("Plaintext: ");
+            
+            for (int j = 0, k = strlen(text); j < k; j++)
+            {
+                if (isupper(text[j]))
+                {
+                    text[j] = (int) text[j] - 65;
+                    
+                    //text[j] = argv[1][j];
+                    
+                    //text[j] = toupper(text[j]);
+                    
+                    printf("%i\n", text[j]);
+                }
+                
+                else if (islower(text[j]))
+                {
+                    text[j] -= 97;
+                    
+                    text[j] = argv[1][j];
+                    
+                    text[j] = tolower(text[j]);
+                }
+            }
+            
+            //printf("Ciphertext: %s\n", text);
+        }
+        
+        else
+        {
+            printf("Key must contain 26 alphabetical characters\n");
+        }
     }
     
     else if (argc == 2 && strlen(argv[1]) != 26)
     {
         printf("Key must contain 26 characters\n");
+    }
+    
+    else
+    {
+        printf("%s key\n", argv[0]); 
     }
 }
