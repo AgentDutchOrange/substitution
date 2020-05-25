@@ -28,26 +28,26 @@ int main(int argc, string argv[1])
             {
                 if (isupper(text[j]))
                 {
-                    text[j] = (int) text[j] - 65;
+                    text[j] = text[j] - 65;
                     
-                    //text[j] = argv[1][j];
+                    //need to cast text[j] as integer for array argv to accept it
+                    text[j] = argv[1][(int)text[j]];
                     
-                    //text[j] = toupper(text[j]);
-                    
-                    printf("%i\n", text[j]);
+                    text[j] = toupper(text[j]);
                 }
                 
                 else if (islower(text[j]))
                 {
-                    text[j] -= 97;
+                    text[j] = text[j] - 97;
                     
-                    text[j] = argv[1][j];
+                    //need to cast text[j] as integer for array argv to accept it
+                    text[j] = argv[1][(int)text[j]];
                     
                     text[j] = tolower(text[j]);
                 }
             }
             
-            //printf("Ciphertext: %s\n", text);
+            printf("Ciphertext: %s\n", text);
         }
         
         else
